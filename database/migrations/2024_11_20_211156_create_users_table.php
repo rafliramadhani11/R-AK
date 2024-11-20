@@ -13,18 +13,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->string('email')->unique()->safeEmai;
+            $table->string('password');
+            $table->string('name');
+            $table->enum('gender', ['Laki - Laki', 'Perempuan']);
+            $table->string('phone');
+            $table->string('address');
+            $table->string('job_place');
+            $table->string('id_phl');
+
+
+            $table->foreignId('position_id')->constrained('positions', 'id');
+            $table->foreignId('contract_id')->constrained('contracts', 'id');
+
+            $table->timestamps();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -43,7 +46,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
 };
