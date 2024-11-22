@@ -21,21 +21,22 @@ class DatabaseSeeder extends Seeder
     {
         $gender = ['Laki - Laki', 'Perempuan'];
 
-        // User::factory()->create([
-        //     'email' => 'admin@mail.com',
-        //     'password' => Hash::make(123),
-        //     'name' => 'Admin',
-        //     'gender' => Arr::random($gender),
-        //     'phone' => fake()->numerify('08##########'),
-        //     'address' => fake()->address(),
-        //     'job_place' => fake()->citySuffix(),
-        //     'id_phl' => fake()->numerify('########')
-        // ]);
+        User::factory()->create([
+            'email' => 'admin@mail.com',
+            'admin' => true,
+            'password' => Hash::make(123),
+            'name' => 'Admin',
+            'gender' => Arr::random($gender),
+            'phone' => fake()->numerify('08##########'),
+            'address' => fake()->address(),
+            'job_place' => fake()->citySuffix(),
+            'id_phl' => fake()->numerify('########')
+        ]);
 
-        Contract::factory(1)->create();
-        Position::factory(2)->create();
-        Activity::factory(1)->create();
-        User::factory(5)->create();
-        Attendance::factory(10)->create();
+        // Contract::factory(1)->create();
+        // Position::factory(2)->create();
+        // Activity::factory(1)->create();
+        // User::factory(20)->create();
+        // Attendance::factory(30)->create();
     }
 }

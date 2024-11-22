@@ -22,7 +22,8 @@ class AttendanceFactory extends Factory
             'start' => fake()->time('H:i:s'),
             'middle' => fake()->time('H:i:s'),
             'end' => fake()->time('H:i:s'),
-            'user_id' => $users->random()->id
+            'user_id' => $users->random()->id,
+            'created_at' => fake()->dateTimeBetween('-1 week')
         ];
     }
 }

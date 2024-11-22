@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Attendance::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'id_phl';
+    }
 }

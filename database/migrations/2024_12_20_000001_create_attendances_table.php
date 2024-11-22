@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
 
-            $table->time('start');
-            $table->time('middle');
-            $table->time('end');
+            $table->time('start')->nullable();
+            $table->time('middle')->nullable();
+            $table->time('end')->nullable();
 
             $table->foreignId('user_id')->constrained('users', 'id');
 
