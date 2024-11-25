@@ -35,7 +35,7 @@
                         {{ now()->translatedFormat('l') }}
                     </span>
                     <span class="block font-sans text-xs antialiased font-normal leading-normal text-blue-gray-900">
-                        {{ now()->translatedFormat('j F Y') }}
+                        {{ now()->translatedFormat('j F Y') }} sss
                     </span>
                 </td>
                 <td class="px-4 border-t border-blue-gray-50">
@@ -43,8 +43,8 @@
                     <?php
                     use Carbon\Carbon;
                     $now = Carbon::now();
-                    $startPagi = Carbon::createFromTimeString('12:34');
-                    $endPagi = Carbon::createFromTimeString('16:52');
+                    $startPagi = Carbon::createFromTimeString('01:00');
+                    $endPagi = Carbon::createFromTimeString('01:33');
                     ?>
 
                     @if ($now->between($startPagi, $endPagi))

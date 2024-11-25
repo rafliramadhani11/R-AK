@@ -18,7 +18,7 @@ class AppController extends Controller
         $user = Auth::user();
         $latestAttendance = Attendance::where('user_id', $user->id)->latest('created_at')->first();
 
-        dd($latestAttendance);
+
         return view('user.index', compact('user'));
     }
 
