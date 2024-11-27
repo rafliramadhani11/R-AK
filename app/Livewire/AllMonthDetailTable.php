@@ -24,6 +24,7 @@ class AllMonthDetailTable extends Component
     {
         $attendances = Attendance::whereYear('created_at', '=', substr($this->month, 0, 4))
             ->whereMonth('created_at', '=', substr($this->month, 5, 2))
+            ->withoutAdmin()
             ->orderBy('created_at', 'desc')
             ->searchUser($this->search)
             ->with('user')

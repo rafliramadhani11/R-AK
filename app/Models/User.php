@@ -6,8 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -46,14 +48,25 @@ class User extends Authenticatable
         ];
     }
 
+    public function scopeSearchUser(Builder $query, $search)
+    {
+        if (!empty($search)) {
+            return $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('id_phl', 'like', '%' . $search . '%')
+                ->orWhere('job_place', 'like', '%' . $search . '%');
+        }
+
+        return $query;
+    }
+
     public function position(): BelongsTo
     {
         return $this->belongsTo(Position::class);
     }
 
-    public function contract(): BelongsTo
+    public function contract(): HasOne
     {
-        return $this->belongsTo(Contract::class);
+        return $this->hasOne(Contract::class);
     }
 
     public function attendances(): HasMany

@@ -61,13 +61,13 @@
 
                     <td class="p-4 border-t border-blue-gray-50">
                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            {{ $u->contract->no_contract }}
+                            {{ $u->contract->no_contract ?? '-' }}
                         </p>
                     </td>
 
                     <td class="p-4 border-t border-blue-gray-50">
                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            {{ $u->contract->status }}
+                            {{ $u->contract->status ?? '-' }}
                         </p>
                     </td>
 
@@ -77,58 +77,72 @@
                         </p>
                     </td>
 
-                    <td class="p-4 space-x-3 border-t border-blue-gray-50">
+                    <td x-data="{ deleteModal: false }" class="p-4 space-x-3 border-t border-blue-gray-50">
                         <a wire:navigate href="{{ route('admin.karyawan.detail', $u->id_phl) }}"
                             class="font-sans text-sm antialiased font-semibold leading-normal text-blue-900 hover:underline hover:underline-offset-2 hover:decoration-1">
                             Detail
                         </a>
 
-                        <a href="#" x-data=""
-                            x-on:click.prevent="$dispatch('open-modal', 'confirm-delete-absen')"
+                        <a href="#" @click.prevent="deleteModal = true"
                             class="font-sans text-sm antialiased font-semibold leading-normal text-red-900 hover:underline hover:underline-offset-2 hover:decoration-1">
                             Hapus
                         </a>
 
-                        {{-- <x-modal name="confirm-delete-absen" focusable>
-
-                            <form action="#" method="post" class="p-6">
+                        <x-delete-modal>
+                            <form action="{{ route('admin.karyawan.delete', $u->id_phl) }}" method="post">
                                 @csrf
-                                @method('delete')
 
-                                <h2 class="text-lg font-medium text-gray-900">
-                                    {{ __('Kamu yakin akan menghapus absensi ini ?') }}
-                                </h2>
+                                <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+                                    <div class="sm:flex sm:items-start">
 
-                                <p class="mt-1 text-sm text-gray-600">
-                                    {{ __('Data absensi ini akan di hapus secara permanen dan tidak akan bisa di kembalikan. ') }}
-                                </p>
+                                        {{-- ICON --}}
+                                        <div
+                                            class="flex items-center justify-center mx-auto bg-red-100 rounded-full size-12 shrink-0 sm:mx-0 sm:size-10">
+                                            <x-icons.danger />
+                                        </div>
+                                        {{-- BODY --}}
+                                        <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
 
-                                <div class="flex items-end mt-6 space-x-5 underline underline-offset-8">
-                                    <div class="text-2xl font-bold leading-none">
-                                        {{ $u->name }}
+                                            <h2 class="text-base font-semibold text-gray-900">
+                                                {{ __('Kamu yakin akan menghapus karyawan ini ?') }}
+                                            </h2>
+
+                                            <p class="mt-1 text-sm text-gray-500">
+                                                <span class="font-semibold text-gray-900 underline">
+                                                    Data karyawan dan absen ini
+                                                </span>
+
+                                                akan di hapus secara permanen dan tidak akan bisa di kembalikan.
+                                            </p>
+
+                                            <div class="flex items-end mt-6 space-x-5 underline-offset-8">
+
+                                                <div class="text-2xl font-bold leading-none">
+                                                    {{ $u->name }}
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
                                     </div>
+                                    {{-- FOOTER --}}
+                                    <div class="flex justify-end mt-6">
 
-                                    <div class="font-semibold leading-none">
-                                        {{ $u->name }}
+                                        <x-secondary-button @click="deleteModal = false">
+                                            {{ __('Tidak') }}
+                                        </x-secondary-button>
+
+                                        <x-danger-button class="ms-3">
+                                            {{ __('Hapus Karyawan') }}
+                                        </x-danger-button>
+
                                     </div>
-                                </div>
-
-                                <div class="flex justify-end mt-6">
-                                    <x-secondary-button x-on:click="$dispatch('close')">
-                                        {{ __('Tidak') }}
-                                    </x-secondary-button>
-
-                                    <x-danger-button class="ms-3">
-                                        {{ __('Hapus Absen') }}
-                                    </x-danger-button>
                                 </div>
 
                             </form>
-
-                        </x-modal> --}}
-
+                        </x-delete-modal>
                     </td>
-
                 </tr>
             @empty
                 <td class="p-4 border-t border-blue-gray-50" colspan="6">
@@ -138,9 +152,14 @@
                     </p>
                 </td>
             @endforelse
+
         </tbody>
     </table>
+
+
+
     <div class="mt-3">
         {{ $users->links(data: ['scrollTo' => false]) }}
     </div>
+
 </div>

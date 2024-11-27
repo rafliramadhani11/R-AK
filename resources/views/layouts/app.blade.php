@@ -35,6 +35,8 @@
         </main>
     </div>
 
+    @stack('webcam-script')
+
     @livewireScripts
 </body>
 

@@ -15,10 +15,21 @@ return new class extends Migration
             $table->id();
 
             $table->time('start')->nullable();
-            $table->time('middle')->nullable();
-            $table->time('end')->nullable();
+            $table->string('start_activity')->nullable();
 
-            $table->foreignId('user_id')->constrained('users', 'id');
+            $table->time('middle')->nullable();
+            $table->string('middle_activity')->nullable();
+
+
+            $table->time('end')->nullable();
+            $table->string('end_activity')->nullable();
+
+            $table->binary('img_start')->nullable();
+            $table->binary('img_end')->nullable();
+
+            $table->foreignId('user_id')
+                ->constrained('users', 'id')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

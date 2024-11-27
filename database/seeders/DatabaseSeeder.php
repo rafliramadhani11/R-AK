@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Activity;
 use App\Models\Attendance;
 use App\Models\Contract;
 use App\Models\Position;
@@ -30,13 +29,13 @@ class DatabaseSeeder extends Seeder
             'phone' => fake()->numerify('08##########'),
             'address' => fake()->address(),
             'job_place' => fake()->citySuffix(),
-            'id_phl' => fake()->numerify('########')
+            'id_phl' => fake()->numerify('########'),
+            'position_id' => null,
         ]);
 
-        // Contract::factory(1)->create();
         // Position::factory(2)->create();
-        // Activity::factory(1)->create();
-        // User::factory(20)->create();
+        // User::factory(10)->create();
+        // Contract::factory(User::count())->create();
         // Attendance::factory(30)->create();
     }
 }

@@ -13,6 +13,7 @@
                     <span class="text-xl font-bold">{{ now()->translatedFormat('l') }}</span>
                     <span class="text-sm text-slate-500">{{ now()->translatedFormat('j F Y') }}</span>
                 </div>
+
                 <div class=" w-full max-w-xs min-w-[200px]">
                     <livewire:search-user-attendance />
                 </div>

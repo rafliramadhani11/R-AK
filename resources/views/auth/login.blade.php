@@ -4,10 +4,9 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <div>
             <h1 class="block text-xl font-semibold ">Login Akun</h1>
-            <p class="text-sm leading-none">Masukan akun yang sudah anda buat</p>
+            <p class="text-sm leading-none">Masukan akun yang sudah admin buat</p>
         </div>
 
         <!-- Email Address -->

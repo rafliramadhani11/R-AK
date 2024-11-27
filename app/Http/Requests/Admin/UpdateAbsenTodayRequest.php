@@ -16,8 +16,14 @@ class UpdateAbsenTodayRequest extends FormRequest
     {
         return [
             'start' => 'date_format:H:i:s',
+            'start_activity' => 'string|min:5',
+
             'middle' => 'date_format:H:i:s',
-            'end' => 'date_format:H:i:s'
+            'middle_activity' => 'string|min:5',
+
+            'end' => 'date_format:H:i:s',
+            'end_activity' => 'string|min:5',
+
         ];
     }
 }

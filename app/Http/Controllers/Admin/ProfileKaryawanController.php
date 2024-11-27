@@ -7,6 +7,8 @@ use App\Models\Activity;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\JobUpdateRequest;
 use App\Http\Requests\Admin\ProfileUpdateRequest;
+use App\Http\Requests\ContractUpdateRequest;
+use App\Models\Contract;
 
 class ProfileKaryawanController extends Controller
 {
@@ -19,22 +21,12 @@ class ProfileKaryawanController extends Controller
         return redirect()->route('admin.karyawan.detail', $user->id_phl)->with('status', 'profile-updated');
     }
 
-    public function updateJob(Activity $activity, JobUpdateRequest $request)
+    public function updateContract(Contract $contract, ContractUpdateRequest $request)
     {
-        $activity->position->fill([
-            'name' => $request->jabatan
-        ]);
+        $contract->fill($request->validated());
 
-        $activity->fill([
-            'activity_name' => $request->kegiatan,
-            'sub_activity' => $request->sub_kegiatan,
-            'task' => $request->pask
-        ]);
+        $contract->save();
 
-        $activity->position->save();
-
-        $activity->save();
-
-        return back()->with('status', 'job-updated');
+        return back()->with('status', 'contract-updated');
     }
 }

@@ -15,7 +15,6 @@ class AttendanceMonthController extends Controller
 
     public function detail($month)
     {
-
         return view('admin.allAttendance.detail', compact('month'));
     }
 }

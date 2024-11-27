@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,6 +18,7 @@ class ContractFactory extends Factory
      */
     public function definition(): array
     {
+        $users = User::all();
         $status = ['Berjalan', 'Tidak Berjalan'];
         return [
             'no_contract' => fake()->numerify('#/PPK/PN.0#.0#'),
@@ -24,6 +26,7 @@ class ContractFactory extends Factory
             'end_contract' => fake()->date(),
             'status' => Arr::random($status),
             'salary' => fake()->randomFloat(2, 2000000, 10000000),
+            'user_id' => $users->random()->id
         ];
     }
 }

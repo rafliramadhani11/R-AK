@@ -16,14 +16,14 @@
 
         <div>
             <x-input-label for="jabatan" :value="__('Jabatan')" />
-            <x-text-input id="jabatan" name="jabatan" type="text" class="block w-full mt-1" :value="old('jabatan', $activity->position->name)" required
+            <x-text-input id="jabatan" name="jabatan" type="text" class="block w-full mt-1" :value="old('jabatan', $position->name)" required
                 autofocus autocomplete="jabatan" />
             <x-input-error class="mt-2" :messages="$errors->get('jabatan')" />
         </div>
 
         <div>
             <x-input-label for="kegiatan" :value="__('Kegiatan')" />
-            <x-text-input id="kegiatan" name="kegiatan" type="text" class="block w-full mt-1" :value="old('kegiatan', $activity->activity_name)"
+            <x-text-input id="kegiatan" name="kegiatan" type="text" class="block w-full mt-1" :value="old('kegiatan', $activity->activity_name ?? '')"
                 required autofocus autocomplete="kegiatan" />
             <x-input-error class="mt-2" :messages="$errors->get('kegiatan')" />
         </div>
@@ -31,13 +31,13 @@
         <div>
             <x-input-label for="sub_kegiatan" :value="__('Sub Kegiatan')" />
             <x-text-input id="sub_kegiatan" name="sub_kegiatan" type="text" class="block w-full mt-1"
-                :value="old('sub_kegiatan', $activity->sub_activity)" required autofocus autocomplete="sub_kegiatan" />
+                :value="old('sub_kegiatan', $activity->sub_activity ?? '')" required autofocus autocomplete="sub_kegiatan" />
             <x-input-error class="mt-2" :messages="$errors->get('sub_kegiatan')" />
         </div>
 
         <div>
             <x-input-label for="pask" :value="__('Pask')" />
-            <x-text-input id="pask" name="pask" type="text" class="block w-full mt-1" :value="old('pask', $activity->task)"
+            <x-text-input id="pask" name="pask" type="text" class="block w-full mt-1" :value="old('pask', $activity->task ?? '')"
                 required autofocus autocomplete="pask" />
             <x-input-error class="mt-2" :messages="$errors->get('pask')" />
         </div>
@@ -47,7 +47,7 @@
             <x-primary-button>{{ __('Simpan') }}</x-primary-button>
 
             @if (session('status') === 'job-updated')
-                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 5000)"
                     class="text-sm text-gray-600">{{ __('Tersimpan.') }}</p>
             @endif
         </div>

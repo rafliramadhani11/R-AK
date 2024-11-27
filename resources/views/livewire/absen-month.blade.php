@@ -41,6 +41,12 @@
                     </td>
                 </tr>
             @empty
+                <td class="p-4 border-t border-blue-gray-50" colspan="3">
+                    <p
+                        class="block font-sans text-sm antialiased font-semibold leading-normal text-center text-gray-900">
+                        Data tidak ditemukan
+                    </p>
+                </td>
             @endforelse
 
 

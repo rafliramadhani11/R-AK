@@ -20,6 +20,8 @@ return new class extends Migration
             $table->enum('status', ['Berjalan', 'Tidak Berjalan']);
             $table->decimal('salary', 12, 2);
 
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }

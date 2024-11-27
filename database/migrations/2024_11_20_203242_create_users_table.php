@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->boolean('admin')->default(false);
 
-            $table->string('email')->unique()->safeEmai;
+            $table->string('email')->unique()->safeEmail;
             $table->string('password');
             $table->string('name');
             $table->enum('gender', ['Laki - Laki', 'Perempuan']);
@@ -24,9 +24,8 @@ return new class extends Migration
             $table->string('job_place');
             $table->string('id_phl');
 
-
-            $table->foreignId('position_id')->constrained('positions', 'id');
-            $table->foreignId('contract_id')->constrained('contracts', 'id');
+            $table->unsignedBigInteger('position_id')->nullable();
+            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
 
             $table->timestamps();
         });

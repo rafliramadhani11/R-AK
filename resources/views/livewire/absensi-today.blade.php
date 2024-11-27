@@ -51,55 +51,80 @@
                             {{ $a->end }}
                         </p>
                     </td>
-                    <td class="p-4 space-x-3 border-t border-blue-gray-50">
+                    <td x-data="{ deleteModal: false }" class="p-4 space-x-3 border-t border-blue-gray-50">
                         <a wire:navigate href="{{ route('admin.absenToday.detail', $a->id) }}"
                             class="font-sans text-sm antialiased font-semibold leading-normal text-blue-900 hover:underline hover:underline-offset-2 hover:decoration-1">
                             Detail
                         </a>
-                        <a href="#" x-data=""
-                            x-on:click.prevent="$dispatch('open-modal', 'confirm-delete-absen')"
+
+                        <a href="#" x-data="" @click.prevent="deleteModal = true"
                             class="font-sans text-sm antialiased font-semibold leading-normal text-red-900 hover:underline hover:underline-offset-2 hover:decoration-1">
                             Hapus
                         </a>
 
-                        <x-modal name="confirm-delete-absen" focusable>
-
-                            <form action="{{ route('admin.absenToday.delete', $a->id) }}" method="post" class="p-6">
+                        <x-delete-modal>
+                            <form action="{{ route('admin.absenToday.delete', $a->id) }}" method="post">
                                 @csrf
                                 @method('delete')
+                                <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+                                    <div class="sm:flex sm:items-start">
 
-                                <h2 class="text-lg font-medium text-gray-900">
-                                    {{ __('Kamu yakin akan menghapus absensi ini ?') }}
-                                </h2>
+                                        {{-- ICON --}}
+                                        <div
+                                            class="flex items-center justify-center mx-auto bg-red-100 rounded-full size-12 shrink-0 sm:mx-0 sm:size-10">
+                                            <x-icons.danger />
+                                        </div>
+                                        {{-- BODY --}}
+                                        <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
 
-                                <p class="mt-1 text-sm text-gray-600">
-                                    {{ __('Data absensi ini akan di hapus secara permanen dan tidak akan bisa di kembalikan. ') }}
-                                </p>
+                                            <h2 class="text-base font-semibold text-gray-900">
+                                                {{ __('Kamu yakin akan menghapus absensi ini ?') }}
+                                            </h2>
 
-                                <div class="flex items-end mt-6 space-x-5 underline underline-offset-8">
-                                    <div class="text-2xl font-bold leading-none">
-                                        {{ $a->user->name }}
+                                            <p class="mt-1 text-sm text-gray-500">
+                                                <span class="font-semibold text-gray-900 underline">
+                                                    Data absensi ini
+                                                </span>
+                                                akan di hapus secara permanen dan tidak akan bisa di kembalikan.
+                                            </p>
+
+                                            <div class="flex items-end mt-6 space-x-5 underline-offset-8">
+                                                <div class="text-2xl font-bold leading-none">
+                                                    {{ $a->user->name }}
+                                                </div>
+
+                                                <div class="font-semibold leading-none">
+                                                    {{ $a->created_at->translatedFormat('l, ') }}
+                                                    {{ $a->created_at->translatedFormat('j F Y') }}
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
                                     </div>
+                                    {{-- FOOTER --}}
+                                    <div class="flex justify-end mt-6">
 
-                                    <div class="font-semibold leading-none">
-                                        {{ $a->created_at->translatedFormat('l, ') }}
-                                        {{ $a->created_at->translatedFormat('j F Y') }}
+                                        <x-secondary-button @click="deleteModal = false">
+                                            {{ __('Tidak') }}
+                                        </x-secondary-button>
+
+                                        <x-danger-button class="ms-3">
+                                            {{ __('Hapus Absen') }}
+                                        </x-danger-button>
+
+
                                     </div>
-                                </div>
-
-                                <div class="flex justify-end mt-6">
-                                    <x-secondary-button x-on:click="$dispatch('close')">
-                                        {{ __('Tidak') }}
-                                    </x-secondary-button>
-
-                                    <x-danger-button class="ms-3">
-                                        {{ __('Hapus Absen') }}
-                                    </x-danger-button>
                                 </div>
 
                             </form>
 
-                        </x-modal>
+
+                        </x-delete-modal>
+
+
+
                     </td>
                 </tr>
             @empty
@@ -112,6 +137,9 @@
             @endforelse
         </tbody>
     </table>
+
+
+
     <div class="mt-3">
         {{ $attendances->links(data: ['scrollTo' => false]) }}
     </div>

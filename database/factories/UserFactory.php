@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Activity;
 use App\Models\Contract;
 use App\Models\Position;
 use Illuminate\Support\Arr;
@@ -27,7 +28,6 @@ class UserFactory extends Factory
     public function definition(): array
     {
         $positions = Position::all();
-        $contracts = Contract::all();
         $gender = ['Laki - Laki', 'Perempuan'];
 
         return [
@@ -41,7 +41,6 @@ class UserFactory extends Factory
             'id_phl' => fake()->numerify('########'),
 
             'position_id' => $positions->random()->id,
-            'contract_id' => $contracts->random()->id
         ];
     }
 
