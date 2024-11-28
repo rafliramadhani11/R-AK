@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <title></title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -35,7 +38,7 @@
         </main>
     </div>
 
-    @stack('webcam-script')
+    <script></script>
 
     @livewireScripts
 </body>

@@ -77,13 +77,6 @@
         </div>
 
         <div>
-            <x-input-label for="address" :value="__('Alamat')" />
-            <x-text-input id="address" name="address" type="text" class="block w-full mt-1" :value="old('address')"
-                required autofocus autocomplete="address" />
-            <x-input-error class="mt-2" :messages="$errors->get('address')" />
-        </div>
-
-        <div>
             <x-input-label for="position_id" :value="__('Jabatan')" />
             <x-select-input id="position_id" name="position_id" class="block w-full mt-1" :value="old('position_id')" required
                 autofocus autocomplete="position_id">
@@ -106,7 +99,7 @@
             <x-input-error class="mt-2" :messages="$errors->get('job_place')" />
         </div>
 
-        <div class="col-span-2">
+        <div>
             <x-input-label for="address" :value="__('Alamat')" />
             <x-text-input id="address" name="address" type="text" class="block w-full mt-1" :value="old('address')"
                 required autofocus autocomplete="address" />

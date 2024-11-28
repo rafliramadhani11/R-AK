@@ -4,9 +4,6 @@
             {{ __('Absen Sore') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __('Gunakan AM untuk 00 PAGI - 12 SIANG, PM untuk 12 SIANG - 00 MALAM') }}
-        </p>
     </header>
 
     <form method="post" action="{{ route('user.absen-sore.store') }}" class="mt-6 space-y-6">
@@ -14,20 +11,12 @@
         @method('patch')
         <div class="space-y-5 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-5">
 
-            <div class="w-full">
+            <div class="w-full col-span-2">
                 <x-input-label for="time" :value="__('Jam')" />
-                <x-text-input id="time" name="end" type="time" step='any' class="block w-full mt-1"
-                    :value="old('end')" required autofocus autocomplete="end" />
+                <x-text-input id="time" name="end" type="time" step='any' class="block w-1/4 mt-1"
+                    :value="old('end', now()->format('H:i'))" required autofocus autocomplete="end" />
 
                 <x-input-error class="mt-2" :messages="$errors->get('end')" />
-            </div>
-
-            <div class="w-full">
-                <x-input-label for="end_activity" :value="__('Kegiatan')" />
-                <x-text-input id="end_activity" name="end_activity" type="text" class="block w-full mt-1"
-                    :value="old('end_activity')" required autofocus autocomplete="end_activity" />
-
-                <x-input-error class="mt-2" :messages="$errors->get('end_activity')" />
             </div>
 
             <div class="w-full ">

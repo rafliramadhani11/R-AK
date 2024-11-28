@@ -2,18 +2,18 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <div class="flex items-center justify-center mb-6">
+        <img src="{{ asset('img/logo.png') }}" alt="logo" class="size-1/3 ">
+    </div>
+
+    <form method="POST" action="{{ route('login') }}" class="px-6 py-4 mt-6 bg-white shadow-md sm:rounded-lg">
         @csrf
-        <div>
-            <h1 class="block text-xl font-semibold ">Login Akun</h1>
-            <p class="text-sm leading-none">Masukan akun yang sudah admin buat</p>
-        </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
+            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"
+                required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 

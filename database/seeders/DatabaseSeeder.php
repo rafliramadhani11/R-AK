@@ -7,8 +7,8 @@ use App\Models\Contract;
 use App\Models\Position;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Support\Arr;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
             'position_id' => null,
         ]);
 
-        // Position::factory(2)->create();
-        // User::factory(10)->create();
+        // Position::factory(1)->create();
+        // User::factory(1)->create();
         // Contract::factory(User::count())->create();
         // Attendance::factory(30)->create();
     }

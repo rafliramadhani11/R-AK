@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('admin.absenToday.index') }}" wire:navigate class="uppercase">
-                        {{ __('Absensi Karyawan') }}
+                    <a href="{{ route('admin.absenToday.index') }}" wire:navigate>
+                        <img src="{{ asset('img/logo.png') }}" alt="logo" class="size-12">
                     </a>
                 </div>
 

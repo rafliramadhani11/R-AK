@@ -27,85 +27,89 @@
                             </p>
                         </header>
 
-                        <div class="mt-6 space-y-6">
-                            <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
-                                <div class="w-full">
-                                    <x-input-label for="time" :value="__('Pagi')" />
-                                    <span class="text-lg">
-                                        {{ $attendance->start ?? '-' }}
-                                    </span>
-                                </div>
-                                <div class="w-full">
-                                    <x-input-label for="time" :value="__('Aktivitas Pagi')" />
-                                    <span class="text-lg">
-                                        {{ $attendance->start_activity ?? '-' }}
-                                    </span>
+                        @if ($attendance->izin_status === 1)
+                            <div
+                                class="relative w-full p-4 mt-6 bg-white border border-yellow-400 rounded-lg text-slate-900">
+                                <h5 class="mb-1 text-sm font-medium leading-none tracking-tight">Alasan Izin</h5>
+                                <div class="text-lg tracking-wide">
+                                    {{ $attendance->alasan_izin }}
                                 </div>
                             </div>
+                        @else
+                            <div class="mt-6 space-y-6">
 
-                            <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
-                                <div class="w-full">
-                                    <x-input-label for="time" :value="__('Siang')" />
-                                    <span class="text-lg">
-                                        {{ $attendance->middle ?? '-' }}
-                                    </span>
+
+                                <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
+                                    <div class="w-full">
+                                        <x-input-label for="time" :value="__('Pagi')" />
+                                        <span class="text-lg">
+                                            {{ $attendance->start ?? '-' }}
+                                        </span>
+                                    </div>
+                                    <div class="w-full">
+                                        <x-input-label for="time" :value="__('Kegiatan Pagi - Siang')" />
+                                        <span class="text-lg">
+                                            {{ $attendance->start_activity ?? '-' }}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="w-full">
-                                    <x-input-label for="time" :value="__('Kegiatan Siang')" />
-                                    <span class="text-lg">
-                                        {{ $attendance->middle_activity ?? '-' }}
-                                    </span>
+
+                                <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
+                                    <div class="w-full">
+                                        <x-input-label for="time" :value="__('Siang')" />
+                                        <span class="text-lg">
+                                            {{ $attendance->middle ?? '-' }}
+                                        </span>
+                                    </div>
+                                    <div class="w-full">
+                                        <x-input-label for="time" :value="__('Kegiatan Siang - Sore')" />
+                                        <span class="text-lg">
+                                            {{ $attendance->middle_activity ?? '-' }}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
-                                <div class="w-full">
-                                    <x-input-label for="time" :value="__('Sore')" />
-                                    <span class="text-lg">
-                                        {{ $attendance->end ?? '-' }}
-                                    </span>
-                                </div>
-                                <div class="w-full">
-                                    <x-input-label for="time" :value="__('Sore')" />
-                                    <span class="text-lg">
-                                        {{ $attendance->end_activity ?? '-' }}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
-                                <div x-data="image_start('{{ $attendance->img_start ?? '' }}')" class="relative flex flex-col w-full max-w-sm gap-1">
-
-                                    <div>
-                                        <x-input-label value="Foto Absen Pagi" />
-
-                                        <img src="{{ asset('/storage/uploads/img_start/' . $attendance->img_start) }}"
-                                            class="object-cover mt-2 border border-gray-200 rounded"
-                                            style="width: 400px; height: 250px;">
-                                        <span class="flex justify-end text-xs text-gray-500">400x250</span>
+                                <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
+                                    <div class="w-full">
+                                        <x-input-label for="time" :value="__('Sore')" />
+                                        <span class="text-lg">
+                                            {{ $attendance->end ?? '-' }}
+                                        </span>
                                     </div>
 
                                 </div>
 
+                                <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
+                                    <div x-data="image_start('{{ $attendance->img_start ?? '' }}')" class="relative flex flex-col w-full max-w-sm gap-1">
 
-                                <div x-data="image_end('{{ $attendance->img_end ?? '' }}')" class="relative flex flex-col w-full max-w-sm gap-1">
+                                        <div>
+                                            <x-input-label value="Foto Absen Pagi" />
 
-                                    <div>
-                                        <x-input-label value="Foto Absen Sore" />
+                                            <img src="{{ asset('storage/img/img_start/' . $attendance->img_start) }}"
+                                                class="object-cover mt-2 border border-gray-200 rounded"
+                                                style="width: 400px; height: 250px;">
+                                            <span class="flex justify-end text-xs text-gray-500">400x250</span>
+                                        </div>
 
-
-                                        <img src="{{ asset('/storage/uploads/img_end/' . $attendance->img_end) }}"
-                                            class="object-cover mt-2 border border-gray-200 rounded"
-                                            style="width: 400px; height: 250px;">
-                                        <span class="flex justify-end text-xs text-gray-500">400x250</span>
                                     </div>
 
+
+                                    <div x-data="image_end('{{ $attendance->img_end ?? '' }}')" class="relative flex flex-col w-full max-w-sm gap-1">
+
+                                        <div>
+                                            <x-input-label value="Foto Absen Sore" />
+
+
+                                            <img src="{{ asset('storage/img/img_end/' . $attendance->img_end) }}"
+                                                class="object-cover mt-2 border border-gray-200 rounded"
+                                                style="width: 400px; height: 250px;">
+                                            <span class="flex justify-end text-xs text-gray-500">400x250</span>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-
-
+                        @endif
                     </section>
 
                 </div>

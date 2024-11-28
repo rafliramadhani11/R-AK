@@ -49,6 +49,20 @@
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
 
+        {{-- <div>
+            <x-input-label for="id_phl" :value="__('ID PHL')" />
+            <x-text-input id="id_phl" name="id_phl" type="number" class="block w-full mt-1" :value="old('id_phl', $user->id_phl)"
+                required autofocus autocomplete="id_phl" />
+            <x-input-error class="mt-2" :messages="$errors->get('id_phl')" />
+        </div>
+
+        <div>
+            <x-input-label for="job_place" :value="__('Tempat Kerja')" />
+            <x-text-input id="job_place" name="job_place" type="text" class="block w-full mt-1" :value="old('job_place', $user->job_place)"
+                required autofocus autocomplete="job_place" />
+            <x-input-error class="mt-2" :messages="$errors->get('job_place')" />
+        </div> --}}
+
         <div class="md:col-span-2">
             <x-input-label for="address" :value="__('Alamat')" />
             <x-text-input id="address" name="address" type="text" class="block w-full mt-1" :value="old('address', $user->address)"

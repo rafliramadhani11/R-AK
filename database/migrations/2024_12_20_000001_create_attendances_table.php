@@ -20,12 +20,13 @@ return new class extends Migration
             $table->time('middle')->nullable();
             $table->string('middle_activity')->nullable();
 
-
             $table->time('end')->nullable();
-            $table->string('end_activity')->nullable();
 
             $table->binary('img_start')->nullable();
             $table->binary('img_end')->nullable();
+
+            $table->boolean('izin_status')->nullable()->default(false);
+            $table->string('alasan_izin')->nullable();
 
             $table->foreignId('user_id')
                 ->constrained('users', 'id')

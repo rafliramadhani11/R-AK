@@ -20,6 +20,12 @@
                 </div>
             </div>
 
+            <div class="px-8 py-5 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl md:max-w-full">
+                    @include('admin.karyawan.partials.update-job')
+                </div>
+            </div>
+
 
             <div class="px-8 py-5 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl md:max-w-full">

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use Carbon\Carbon;
-use App\Models\Attendance;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\ProfileUpdateRequest;
+use App\Models\Attendance;
 use App\Models\Position;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
@@ -16,8 +15,6 @@ class AppController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $latestAttendance = Attendance::where('user_id', $user->id)->latest('created_at')->first();
-
 
         return view('user.index', compact('user'));
     }
@@ -59,7 +56,7 @@ class AppController extends Controller
     {
         return view('user.profile', [
             'user' => $request->user(),
-            'positions' => Position::all()
+            'positions' => Position::all(),
         ]);
     }
 

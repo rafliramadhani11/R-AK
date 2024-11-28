@@ -3,10 +3,10 @@
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Absen Pagi') }}
         </h2>
-
+        {{--
         <p class="mt-1 text-sm text-gray-600">
             {{ __('Gunakan AM untuk 00 PAGI - 12 SIANG, PM untuk 12 SIANG - 00 MALAM') }}
-        </p>
+        </p> --}}
     </header>
 
     <form method="post" action="{{ route('user.absen-pagi.store') }}" class="mt-6 space-y-6">
@@ -17,13 +17,13 @@
             <div class="w-full">
                 <x-input-label for="time" :value="__('Jam')" />
                 <x-text-input id="time" name="start" type="time" step='any' class="block w-full mt-1"
-                    :value="old('start')" required autofocus autocomplete="start" />
+                    :value="old('start', now()->format('H:i'))" required autofocus autocomplete="start" />
 
                 <x-input-error class="mt-2" :messages="$errors->get('start')" />
             </div>
 
             <div class="w-full">
-                <x-input-label for="start_activity" :value="__('Kegiatan')" />
+                <x-input-label for="start_activity" :value="__('Kegiatan Pagi - Siang')" />
                 <x-text-input id="start_activity" name="start_activity" type="text" class="block w-full mt-1"
                     :value="old('start_activity')" required autofocus autocomplete="start_activity" />
 

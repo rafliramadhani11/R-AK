@@ -1,15 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\User\AppController;
-use App\Http\Controllers\Admin\KaryawanController;
 use App\Http\Controllers\Admin\AttendanceMonthController;
 use App\Http\Controllers\Admin\AttendanceTodayController;
+use App\Http\Controllers\Admin\KaryawanController;
 use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\ProfileKaryawanController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\AppController;
 use App\Http\Controllers\User\AttendanceController;
-use App\Models\Position;
+use Illuminate\Support\Facades\Route;
 
 // ADMIN
 Route::middleware('auth')->group(function () {
@@ -38,7 +37,7 @@ Route::middleware('auth')->group(function () {
 
     Route::patch('/dashboard/karyawan/{user}/profile/update', [ProfileKaryawanController::class, 'updateProfile'])->name('admin.karyawan.update.profile');
 
-    Route::patch('/dashboard/karyawan/{activity}/job/update', [ProfileKaryawanController::class, 'updateJob'])->name('admin.karyawan.update.job');
+    Route::patch('/dashboard/karyawan/{user}/job/update', [ProfileKaryawanController::class, 'updateJob'])->name('admin.karyawan.update.job');
 
     Route::patch('/dashboard/karyawan/{contract}/contract/update', [ProfileKaryawanController::class, 'updateContract'])->name('admin.karyawan.update.contract');
 
@@ -52,10 +51,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/jabatan/{position}/detail', [PositionController::class, 'detail'])->name('admin.jabatan.detail');
 
     Route::post('/dashboard/jabatan/{position}/deleted', [PositionController::class, 'destroy'])->name('admin.jabatan.destroy');
-
-
-
-
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -79,6 +74,8 @@ Route::middleware('auth')->group(function () {
 
     Route::patch('/app/absen-sore/created', [AttendanceController::class, 'absenSoreCreate'])->name('user.absen-sore.store');
 
+    Route::patch('/app/izin/created', [AttendanceController::class, 'absenIzinCreate'])->name('user.absen-izin.store');
+
     Route::get('/app/attendance/{attendance}/detail', [AppController::class, 'detail'])->name('user.attendance.detail');
 
     // ATTENDENCE MONTH
@@ -92,4 +89,4 @@ Route::middleware('auth')->group(function () {
     Route::patch('/app/profile/update', [AppController::class, 'update'])->name('user.update.profile');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
