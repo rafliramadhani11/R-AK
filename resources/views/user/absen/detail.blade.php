@@ -37,8 +37,6 @@
                             </div>
                         @else
                             <div class="mt-6 space-y-6">
-
-
                                 <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
                                     <div class="w-full">
                                         <x-input-label for="time" :value="__('Pagi')" />

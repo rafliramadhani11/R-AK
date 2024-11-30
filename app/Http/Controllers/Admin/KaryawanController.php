@@ -7,17 +7,22 @@ use App\Http\Requests\Admin\KaryawanStoreRequest;
 use App\Models\Contract;
 use App\Models\Position;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class KaryawanController extends Controller
 {
     public function index()
     {
+        Gate::authorize('adminDashboard', Auth::user());
+
         return view('admin.karyawan.index');
     }
 
     public function create()
     {
+        Gate::authorize('adminDashboard', Auth::user());
         $positions = Position::all();
 
         return view('admin.karyawan.create', compact('positions'));
@@ -25,6 +30,7 @@ class KaryawanController extends Controller
 
     public function store(KaryawanStoreRequest $request)
     {
+        Gate::authorize('adminDashboard', Auth::user());
         $request['id_phl'] = fake()->numerify('########');
 
         $user = User::create([
@@ -54,6 +60,7 @@ class KaryawanController extends Controller
 
     public function detail(User $user)
     {
+        Gate::authorize('adminDashboard', Auth::user());
         $user = User::where('id', $user->id)->with('contract', 'position')->first();
 
         $positions = Position::all();
@@ -67,6 +74,7 @@ class KaryawanController extends Controller
 
     public function destroy(User $user)
     {
+        Gate::authorize('adminDashboard', Auth::user());
         $user->delete();
 
         return back()->with('status', 'karyawan-deleted');

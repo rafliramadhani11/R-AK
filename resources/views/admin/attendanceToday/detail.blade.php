@@ -40,8 +40,7 @@
                                 @csrf
                                 @method('patch')
 
-                                <div
-                                    class="p-4 bg-gray-100 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
+                                <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
                                     <div class="w-full">
                                         <x-input-label for="time" :value="__('Pagi')" />
                                         <x-text-input id="time" name="start" type="time" step='any'
@@ -51,7 +50,7 @@
                                         <x-input-error class="mt-2" :messages="$errors->get('start')" />
                                     </div>
                                     <div class="w-full">
-                                        <x-input-label for="start_activity" :value="__('Kegiatan')" />
+                                        <x-input-label for="start_activity" :value="__('Kegiatan Pagi - Siang')" />
                                         <x-text-input id="start_activity" name="start_activity" type="text"
                                             class="block w-full mt-1" :value="old('start_activity', $attendance->start_activity)" required autofocus
                                             autocomplete="start_activity" />
@@ -60,8 +59,7 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="p-4 bg-gray-100 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
+                                <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
                                     <div class="w-full">
                                         <x-input-label for="middle" :value="__('Siang')" />
                                         <x-text-input id="middle" name="middle" type="time" step='any'
@@ -71,7 +69,7 @@
                                         <x-input-error class="mt-2" :messages="$errors->get('start')" />
                                     </div>
                                     <div class="w-full">
-                                        <x-input-label for="middle_activity" :value="__('Kegiatan')" />
+                                        <x-input-label for="middle_activity" :value="__('Kegiatan Siang - Sore')" />
                                         <x-text-input id="middle_activity" name="middle_activity" type="text"
                                             class="block w-full mt-1" :value="old('middle_activity', $attendance->middle_activity)" required autofocus
                                             autocomplete="middle_activity" />
@@ -80,23 +78,13 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    class="p-4 bg-gray-100 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
-                                    <div class="w-full">
+                                <div class="p-4 rounded sm:flex sm:items-center sm:justify-between sm:gap-x-5">
+                                    <div class="w-1/2">
                                         <x-input-label for="end" :value="__('Sore')" />
                                         <x-text-input id="end" name="end" type="time" step='any'
                                             class="block w-full mt-1" :value="old('end', $attendance->end)" required autofocus
                                             autocomplete="end" />
-
                                         <x-input-error class="mt-2" :messages="$errors->get('end')" />
-                                    </div>
-                                    <div class="w-full">
-                                        <x-input-label for="end_activity" :value="__('Kegiatan')" />
-                                        <x-text-input id="end_activity" name="end_activity" type="text"
-                                            class="block w-full mt-1" :value="old('end_activity', $attendance->end_activity)" required autofocus
-                                            autocomplete="end_activity" />
-
-                                        <x-input-error class="mt-2" :messages="$errors->get('end_activity')" />
                                     </div>
                                 </div>
 
@@ -107,7 +95,7 @@
                                             <x-input-label value="Foto Absen Pagi" />
 
 
-                                            <img src="{{ $attendance->img_start }}"
+                                            <img src="{{ asset('storage/img/img_start/' . $attendance->img_start) }}"
                                                 class="object-cover mt-2 border border-gray-200 rounded"
                                                 style="width: 400px; height: 250px;">
                                             <span class="flex justify-end text-xs text-gray-500">400x250</span>
@@ -121,8 +109,7 @@
                                         <div>
                                             <x-input-label value="Foto Absen Sore" />
 
-
-                                            <img src="{{ $attendance->img_end }}"
+                                            <img src="{{ asset('storage/img/img_end/' . $attendance->img_end) }}"
                                                 class="object-cover mt-2 border border-gray-200 rounded"
                                                 style="width: 400px; height: 250px;">
                                             <span class="flex justify-end text-xs text-gray-500">400x250</span>
