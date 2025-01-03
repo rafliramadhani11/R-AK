@@ -1,7 +1,7 @@
 import "./bootstrap";
 
 let title = "Sudin Nakertransgi | Absensi Karyawan";
-let speed = 200; // kecepatan scroll dalam milidetik
+let speed = 200;
 let index = 0;
 
 function scrollTitle() {

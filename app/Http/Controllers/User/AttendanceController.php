@@ -17,21 +17,24 @@ class AttendanceController extends Controller
             'img_start' => ['required'],
         ]);
 
+        // Decode Base64 image
         $img = $validated['img_start'];
-        $folderPath = 'img/img_start/';
-
         $image_parts = explode(';base64,', $img);
         $image_type_aux = explode('image/', $image_parts[0]);
-
         $image_type = $image_type_aux[1];
         $image_base64 = base64_decode($image_parts[1]);
 
-        $fileName = uniqid().'.png';
-        $file = $folderPath.$fileName;
-        Storage::put($file, $image_base64);
+        // Generate unique filename
+        $fileName = uniqid().'.'.$image_type;
 
-        $validated['img_start'] = $fileName;
+        // Save file to 'public' disk
+        $filePath = 'img/img_start/'.$fileName;
+        Storage::disk('public')->put($filePath, $image_base64);
 
+        // Update img_start path for database
+        $validated['img_start'] = $filePath;
+
+        // Save to database
         Attendance::create([
             'start' => $validated['start'],
             'start_activity' => $validated['start_activity'],
@@ -39,7 +42,7 @@ class AttendanceController extends Controller
             'img_start' => $validated['img_start'],
         ]);
 
-        return redirect()->route('user.attendance.index');
+        return redirect()->route('user.attendance.index')->with('success', 'Attendance created successfully!');
     }
 
     public function absenSiangCreate(Request $request)
@@ -70,20 +73,21 @@ class AttendanceController extends Controller
             'img_end' => ['required'],
         ]);
 
+        // Decode Base64 image
         $img = $validated['img_end'];
-        $folderPath = 'img/img_end/';
-
         $image_parts = explode(';base64,', $img);
         $image_type_aux = explode('image/', $image_parts[0]);
-
         $image_type = $image_type_aux[1];
         $image_base64 = base64_decode($image_parts[1]);
 
-        $fileName = uniqid().'.png';
-        $file = $folderPath.$fileName;
-        Storage::put($file, $image_base64);
+        // Generate unique filename
+        $fileName = uniqid().'.'.$image_type;
 
-        $validated['img_end'] = $fileName;
+        // Save file to 'public' disk
+        $filePath = 'img/img_end/'.$fileName;
+        Storage::disk('public')->put($filePath, $image_base64);
+
+        $validated['img_end'] = $filePath;
 
         $latestAttendance->fill([
             'end' => $validated['end'],

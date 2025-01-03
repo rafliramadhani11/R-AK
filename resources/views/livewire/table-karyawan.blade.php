@@ -1,4 +1,9 @@
 <div class="relative flex flex-col w-full h-full overflow-x-auto text-gray-700">
+    <div class="mb-5">
+        <x-primary-button wire:click='exportExcel' wire:loading.attr='disabled'>
+            Export Excel
+        </x-primary-button>
+    </div>
     <table class="w-full text-left table-auto min-w-max">
         <thead>
             <tr>
@@ -15,16 +20,6 @@
                 <th class="p-4 border-b border-gray-300 bg-blue-gray-50">
                     <p class="block font-sans text-sm antialiased font-semibold leading-none text-gray-900">
                         Jabatan
-                    </p>
-                </th>
-                <th class="p-4 border-b border-gray-300 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-semibold leading-none text-gray-900">
-                        No. Kontrak
-                    </p>
-                </th>
-                <th class="p-4 border-b border-gray-300 bg-blue-gray-50">
-                    <p class="block font-sans text-sm antialiased font-semibold leading-none text-gray-900">
-                        Status Kontrak
                     </p>
                 </th>
                 <th class="p-4 border-b border-gray-300 bg-blue-gray-50">
@@ -59,17 +54,7 @@
                         </p>
                     </td>
 
-                    <td class="p-4 border-t border-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            {{ $u->contract->no_contract ?? '-' }}
-                        </p>
-                    </td>
 
-                    <td class="p-4 border-t border-blue-gray-50">
-                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                            {{ $u->contract->status ?? '-' }}
-                        </p>
-                    </td>
 
                     <td class="p-4 border-t border-blue-gray-50">
                         <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
@@ -78,7 +63,7 @@
                     </td>
 
                     <td x-data="{ deleteModal: false }" class="p-4 space-x-3 border-t border-blue-gray-50">
-                        <a wire:navigate href="{{ route('admin.karyawan.detail', $u->id_phl) }}"
+                        <a href="{{ route('admin.karyawan.detail', $u->id_phl) }}"
                             class="font-sans text-sm antialiased font-semibold leading-normal text-blue-900 hover:underline hover:underline-offset-2 hover:decoration-1">
                             Detail
                         </a>

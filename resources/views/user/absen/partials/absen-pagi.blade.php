@@ -72,7 +72,7 @@
         </div>
 
     </form>
-
+    {{-- <livewire:admin.absen-pagi.create /> --}}
 
     <script>
         let camera_button = document.querySelector("#start-camera");

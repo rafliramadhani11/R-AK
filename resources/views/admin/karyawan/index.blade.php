@@ -8,16 +8,17 @@
     <div class="py-12 space-y-3">
 
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between px-6 py-3 overflow-hidden bg-white shadow-sm sm:rounded-lg">
+            <div class="items-center justify-between px-6 py-3 overflow-hidden bg-white shadow-sm md:flex sm:rounded-lg">
                 <div class="w-full max-w-xs min-w-[200px]">
                     <livewire:search-user-attendance />
                 </div>
 
-
-                <a href="{{ route('admin.karyawan.create') }}"
-                    class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    Buat Karyawan Baru
-                </a>
+                <div class="mt-3 md:mt-0">
+                    <a href="{{ route('admin.karyawan.create') }}"
+                        class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        Buat Karyawan Baru
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -51,6 +52,8 @@
                             </h5>
                         </div>
                     @endif
+
+
 
                     <livewire:table-karyawan />
                 </div>

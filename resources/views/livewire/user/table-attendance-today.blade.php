@@ -47,8 +47,8 @@
                     <?php
                     use Carbon\Carbon;
                     $now = Carbon::now();
-                    $startPagi = Carbon::createFromTimeString('00:00');
-                    $endPagi = Carbon::createFromTimeString('23:00');
+                    $startPagi = Carbon::createFromTimeString('07:00');
+                    $endPagi = Carbon::createFromTimeString('08:00');
                     ?>
 
                     @if ($now->between($startPagi, $endPagi))
@@ -83,8 +83,8 @@
                 </td>
                 <td class="px-4 border-t border-blue-gray-50">
                     <?php
-                    $startSiang = Carbon::createFromTimeString('00:00');
-                    $endSiang = Carbon::createFromTimeString('23:00');
+                    $startSiang = Carbon::createFromTimeString('12:00');
+                    $endSiang = Carbon::createFromTimeString('13:00');
                     ?>
 
                     @if ($now->between($startSiang, $endSiang))
@@ -102,8 +102,8 @@
                 <td class="px-4 border-t border-blue-gray-50">
 
                     <?php
-                    $startSore = Carbon::createFromTimeString('00:00');
-                    $endSore = Carbon::createFromTimeString('23:00');
+                    $startSore = Carbon::createFromTimeString('16:30');
+                    $endSore = Carbon::createFromTimeString('23:30');
                     ?>
                     @if ($now->between($startSore, $endSore))
 
@@ -260,7 +260,7 @@
 
                     <td x-data="{ deleteModal: false }" class="p-4 space-x-3 border-t border-blue-gray-50">
 
-                        <a wire:navigate href="{{ route('user.attendance.detail', $a->id) }}"
+                        <a href="{{ route('user.attendance.detail', $a->id) }}"
                             class="font-sans text-sm antialiased font-semibold leading-normal text-blue-900 hover:underline hover:underline-offset-2 hover:decoration-1">
                             Detail
                         </a>

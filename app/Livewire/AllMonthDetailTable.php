@@ -2,15 +2,19 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
+use App\Exports\AttendanceMonthDetailExport;
 use App\Models\Attendance;
 use Livewire\Attributes\On;
+use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AllMonthDetailTable extends Component
 {
     use WithPagination;
+
     public $month;
+
     public $search = '';
 
     #[On('searchUpdated')]
@@ -18,6 +22,12 @@ class AllMonthDetailTable extends Component
     {
         $this->search = $search;
         $this->resetPage();
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(
+            new AttendanceMonthDetailExport($this->month), 'Absen-Detail-'.$this->month.'.xlsx');
     }
 
     public function render()

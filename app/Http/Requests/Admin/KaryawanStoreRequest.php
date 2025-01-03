@@ -2,11 +2,10 @@
 
 namespace App\Http\Requests\Admin;
 
-use Rules\Password;
 use App\Models\User;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
-use Illuminate\Foundation\Http\FormRequest;
 
 class KaryawanStoreRequest extends FormRequest
 {
@@ -25,23 +24,17 @@ class KaryawanStoreRequest extends FormRequest
                 'lowercase',
                 'email',
                 'max:255',
-                'unique:' . User::class
+                'unique:'.User::class,
             ],
             'password' => ['required', 'min:3', 'confirmed'],
             // PROFILE
             'name' => ['required', 'string', 'max:255'],
             'gender' => [
                 'required',
-                Rule::in(['Laki - Laki', 'Perempuan'])
+                Rule::in(['Laki - Laki', 'Perempuan']),
             ],
             'phone' => ['required', 'numeric'],
             'address' => ['required', 'string'],
-            // CONTRACT
-            "no_contract" => ['required', 'string'],
-            "start_contract" => ['required', 'date'],
-            "end_contract" => ['required', 'date'],
-            "status" => ['required', Rule::in(['Berjalan', 'Tidak Berjalan'])],
-            "salary" => ['required', 'numeric'],
         ];
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Livewire;
 
-use App\Models\User;
-use Livewire\Component;
+use App\Exports\AttendanceExport;
 use App\Models\Attendance;
 use Livewire\Attributes\On;
+use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AbsensiToday extends Component
 {
@@ -19,6 +20,11 @@ class AbsensiToday extends Component
     {
         $this->search = $search;
         $this->resetPage();
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new AttendanceExport, 'Absen-Hari-ini.xlsx');
     }
 
     public function render()

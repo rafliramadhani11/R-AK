@@ -2,13 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Activity;
-use App\Models\Contract;
 use App\Models\Position;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -31,16 +28,16 @@ class UserFactory extends Factory
         $gender = ['Laki - Laki', 'Perempuan'];
 
         return [
-            'email' => fake()->freeEmail(),
-            'password' => Hash::make(123),
-            'name' => fake()->name(),
-            'gender' => Arr::random($gender),
-            'phone' => fake()->numerify('08##########'),
-            'address' => fake()->address(),
-            'job_place' => fake()->citySuffix(),
-            'id_phl' => fake()->numerify('########'),
+            // 'email' => fake()->freeEmail(),
+            // 'password' => Hash::make(123),
+            // 'name' => fake()->name(),
+            // 'gender' => Arr::random($gender),
+            // 'phone' => fake()->numerify('08##########'),
+            // 'address' => fake()->address(),
+            // 'job_place' => fake()->citySuffix(),
+            // 'id_phl' => fake()->numerify('########'),
 
-            'position_id' => $positions->random()->id,
+            // 'position_id' => $positions->random()->id,
         ];
     }
 
@@ -49,7 +46,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
     }

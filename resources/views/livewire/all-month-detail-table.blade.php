@@ -1,4 +1,9 @@
 <div class="relative flex flex-col w-full h-full overflow-x-auto text-gray-700">
+    <div class="py-2 mb-5">
+        <x-primary-button wire:click='exportExcel' wire:loading.attr='disabled'>
+            Export Excel
+        </x-primary-button>
+    </div>
     <table class="w-full text-left table-auto min-w-max">
         <thead>
             <tr>
@@ -65,7 +70,7 @@
                         </p>
                     </td>
                     {{-- <td class="p-4 space-x-3 border-t border-blue-gray-50">
-                        <a wire:navigate href="{{ route('admin.absenToday.detail', $a->id) }}"
+                        <a  href="{{ route('admin.absenToday.detail', $a->id) }}"
                             class="font-sans text-sm antialiased font-semibold leading-normal text-blue-900 hover:underline hover:underline-offset-2 hover:decoration-1">
                             Detail
                         </a>

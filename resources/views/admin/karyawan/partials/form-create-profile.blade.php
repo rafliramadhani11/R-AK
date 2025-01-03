@@ -85,7 +85,7 @@
                     <option value="{{ $p->id }}">{{ $p->name }}</option>
                 @endforeach
             </x-select-input>
-            <a href="{{ route('admin.jabatan.index') }}" wire:navigate
+            <a href="{{ route('admin.jabatan.index') }}"
                 class="text-xs font-semibold tracking-wide text-gray-500 underline">
                 Buat Jabatan baru di sini
             </a>
@@ -104,60 +104,6 @@
             <x-text-input id="address" name="address" type="text" class="block w-full mt-1" :value="old('address')"
                 required autofocus autocomplete="address" />
             <x-input-error class="mt-2" :messages="$errors->get('address')" />
-        </div>
-
-        {{-- CONTRACT --}}
-        <header class="mt-6 md:col-span-2">
-            <h2 class="text-lg font-medium text-gray-900">
-                {{ __('Data Kontrak') }}
-            </h2>
-
-            <p class="mt-1 text-sm text-gray-600">
-                {{ __('Buat data kontrak dengan baik dan benar') }}
-            </p>
-        </header>
-
-        <div>
-            <x-input-label for="no_contract" :value="__('No. Kontrak')" />
-            <x-text-input id="no_contract" name="no_contract" type="number" class="block w-full mt-1"
-                :value="old('no_contract')" required autofocus autocomplete="no_contract" />
-            <x-input-error class="mt-2" :messages="$errors->get('no_contract')" />
-        </div>
-
-        <div>
-            <x-input-label for="start_contract" :value="__('Mulai Kontrak')" />
-            <x-text-input id="start_contract" name="start_contract" type="date" class="block w-full mt-1"
-                :value="old('start_contract')" required autofocus autocomplete="start_contract" />
-            <x-input-error class="mt-2" :messages="$errors->get('start_contract')" />
-        </div>
-
-        <div>
-            <x-input-label for="end_contract" :value="__('Habis Kontrak')" />
-            <x-text-input id="end_contract" name="end_contract" type="date" class="block w-full mt-1"
-                :value="old('end_contract')" required autofocus autocomplete="end_contract" />
-            <x-input-error class="mt-2" :messages="$errors->get('end_contract')" />
-        </div>
-
-        <div>
-            <x-input-label for="status" :value="__('Status')" />
-            <x-select-input id="status" name="status" class="block w-full mt-1" :value="old('status')" required
-                autofocus autocomplete="status">
-                <option selected disabled></option>
-                <option value="Berjalan" {{ old('status') === 'Berjalan' ? 'selected' : '' }}>
-                    Berjalan
-                </option>
-                <option value="Tidak Berjalan" {{ old('status') === 'Tidak Berjalan' ? 'selected' : '' }}>
-                    Tidak Berjalan
-                </option>
-            </x-select-input>
-            <x-input-error class="mt-2" :messages="$errors->get('status')" />
-        </div>
-
-        <div class="col-span-2">
-            <x-input-label for="salary" :value="__('Gaji')" />
-            <x-text-input id="salary" name="salary" type="number" step="any" class="block w-full mt-1"
-                :value="old('salary')" required autofocus autocomplete="salary" />
-            <x-input-error class="mt-2" :messages="$errors->get('salary')" />
         </div>
 
         {{-- BUTTON SAVE --}}

@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            <a href="{{ route('user.attendance.index') }}" wire:navigate
+            <a href="{{ route('user.attendance.index') }}"
                 class="hover:underline hover:underline-offset-8 hover:decoration-2">
                 {{ __('Absen') }}
             </a>
@@ -83,7 +83,7 @@
                                         <div>
                                             <x-input-label value="Foto Absen Pagi" />
 
-                                            <img src="{{ asset('storage/img/img_start/' . $attendance->img_start) }}"
+                                            <img src="{{ asset('storage/' . $attendance->img_start) }}"
                                                 class="object-cover mt-2 border border-gray-200 rounded"
                                                 style="width: 400px; height: 250px;">
                                             <span class="flex justify-end text-xs text-gray-500">400x250</span>
@@ -98,7 +98,7 @@
                                             <x-input-label value="Foto Absen Sore" />
 
 
-                                            <img src="{{ asset('storage/img/img_end/' . $attendance->img_end) }}"
+                                            <img src="{{ asset('storage/' . $attendance->img_end) }}"
                                                 class="object-cover mt-2 border border-gray-200 rounded"
                                                 style="width: 400px; height: 250px;">
                                             <span class="flex justify-end text-xs text-gray-500">400x250</span>

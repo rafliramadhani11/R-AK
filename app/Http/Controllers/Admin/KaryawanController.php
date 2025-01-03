@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\KaryawanStoreRequest;
-use App\Models\Contract;
 use App\Models\Position;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -44,15 +43,6 @@ class KaryawanController extends Controller
             'position_id' => $request->position_id,
             'job_place' => $request->job_place,
             'id_phl' => $request->id_phl,
-        ]);
-
-        Contract::create([
-            'user_id' => $user->id,
-            'no_contract' => $request->no_contract,
-            'start_contract' => $request->start_contract,
-            'end_contract' => $request->end_contract,
-            'status' => $request->status,
-            'salary' => $request->salary,
         ]);
 
         return redirect()->route('admin.karyawan.index')->with('status', 'karyawan-created');

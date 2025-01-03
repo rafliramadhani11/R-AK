@@ -18,6 +18,7 @@ class AttendanceFactory extends Factory
     public function definition(): array
     {
         $users = User::all();
+
         return [
             'start' => fake()->time('H:i:s'),
             'start_activity' => fake()->sentence(),
@@ -26,13 +27,12 @@ class AttendanceFactory extends Factory
             'middle_activity' => fake()->sentence(),
 
             'end' => fake()->time('H:i:s'),
-            'end_activity' => fake()->sentence(),
 
             'img_start' => fake()->imageUrl(640, 480, 'datang', true),
             'img_end' => fake()->imageUrl(640, 480, 'pulang', true),
 
-            'user_id' => $users->random()->id,
-            'created_at' => fake()->dateTimeBetween('-1 week')
+            'user_id' => 4,
+            'created_at' => fake()->dateTimeBetween('-1 week'),
         ];
     }
 }

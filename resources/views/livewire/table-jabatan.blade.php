@@ -34,7 +34,7 @@
                         </p>
                     </td>
                     <td x-data="{ deleteModal: false }" class="p-4 space-x-3 border-t border-blue-gray-50">
-                        <a wire:navigate href="{{ route('admin.jabatan.detail', $p->id) }}"
+                        <a href="{{ route('admin.jabatan.detail', $p->id) }}"
                             class="font-sans text-sm antialiased font-semibold leading-normal text-blue-900 hover:underline hover:underline-offset-2 hover:decoration-1">
                             Detail
                         </a>

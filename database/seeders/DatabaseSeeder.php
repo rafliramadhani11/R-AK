@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'email' => 'admin@mail.com',
-            'admin' => true,
             'password' => Hash::make(123),
             'name' => 'Admin',
             'gender' => Arr::random($gender),
@@ -31,6 +30,8 @@ class DatabaseSeeder extends Seeder
             'job_place' => fake()->citySuffix(),
             'id_phl' => fake()->numerify('########'),
             'position_id' => null,
+
+            'admin' => true,
         ]);
 
         // Position::factory(1)->create();

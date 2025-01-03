@@ -22,8 +22,8 @@ return new class extends Migration
 
             $table->time('end')->nullable();
 
-            $table->binary('img_start')->nullable();
-            $table->binary('img_end')->nullable();
+            $table->string('img_start')->nullable();
+            $table->string('img_end')->nullable();
 
             $table->boolean('izin_status')->nullable()->default(false);
             $table->string('alasan_izin')->nullable();

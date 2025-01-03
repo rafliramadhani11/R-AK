@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="#" wire:navigate>
+                    <a href="#">
                         <img src="{{ asset('img/logo.png') }}" alt="logo" class="size-12">
                     </a>
                 </div>
@@ -13,27 +13,27 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 md:flex">
                     @if (Auth::user()->admin === 1)
-                        <x-nav-link :href="route('admin.absenToday.index')" wire:navigate :active="request()->routeIs('admin.absenToday.index')">
+                        <x-nav-link :href="route('admin.absenToday.index')" :active="request()->routeIs('admin.absenToday.index')">
                             {{ __('Absen') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('admin.absenMonth.index')" wire:navigate :active="request()->routeIs('admin.absenMonth.index')">
+                        <x-nav-link :href="route('admin.absenMonth.index')" :active="request()->routeIs('admin.absenMonth.index')">
                             {{ __('Absen Bulanan') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('admin.karyawan.index')" wire:navigate :active="request()->routeIs('admin.karyawan.index')">
+                        <x-nav-link :href="route('admin.karyawan.index')" :active="request()->routeIs('admin.karyawan.index')">
                             {{ __('Karyawan') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('admin.jabatan.index')" wire:navigate :active="request()->routeIs('admin.jabatan.index')">
+                        <x-nav-link :href="route('admin.jabatan.index')" :active="request()->routeIs('admin.jabatan.index')">
                             {{ __('Jabatan') }}
                         </x-nav-link>
                     @else
-                        <x-nav-link :href="route('user.attendance.index')" wire:navigate :active="request()->routeIs('user.attendance.index')">
+                        <x-nav-link :href="route('user.attendance.index')" :active="request()->routeIs('user.attendance.index')">
                             {{ __('Absensi') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('user.attendanceMonth.index')" wire:navigate :active="request()->routeIs('user.attendanceMonth.index')">
+                        <x-nav-link :href="route('user.attendanceMonth.index')" :active="request()->routeIs('user.attendanceMonth.index')">
                             {{ __('Absensi Bulanan') }}
                         </x-nav-link>
                     @endif
@@ -62,15 +62,12 @@
 
                     <x-slot name="content">
 
-                        @if (Auth::user()->admin === 1)
-                            <x-dropdown-link wire:navigate :href="route('profile.edit')">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
-                        @else
-                            <x-dropdown-link wire:navigate :href="route('user.profile')">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
-                        @endif
+
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
+
+
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -107,27 +104,27 @@
         <div class="pt-2 pb-3 space-y-1">
 
             @if (Auth::user()->admin === 1)
-                <x-responsive-nav-link wire:navigate :href="route('admin.absenToday.index')" :active="request()->routeIs('admin.absenToday.index')">
+                <x-responsive-nav-link :href="route('admin.absenToday.index')" :active="request()->routeIs('admin.absenToday.index')">
                     {{ __('Absen') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link wire:navigate :href="route('admin.absenMonth.index')" :active="request()->routeIs('admin.absenMonth.index')">
+                <x-responsive-nav-link :href="route('admin.absenMonth.index')" :active="request()->routeIs('admin.absenMonth.index')">
                     {{ __('Absen Bulanan') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link wire:navigate :href="route('admin.karyawan.index')" :active="request()->routeIs('admin.karyawan.index')">
+                <x-responsive-nav-link :href="route('admin.karyawan.index')" :active="request()->routeIs('admin.karyawan.index')">
                     {{ __('Karyawan') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link wire:navigate :href="route('admin.jabatan.index')" :active="request()->routeIs('admin.jabatan.index')">
+                <x-responsive-nav-link :href="route('admin.jabatan.index')" :active="request()->routeIs('admin.jabatan.index')">
                     {{ __('Jabatan') }}
                 </x-responsive-nav-link>
             @else
-                <x-responsive-nav-link wire:navigate :href="route('user.attendance.index')" :active="request()->routeIs('user.attendance.index')">
+                <x-responsive-nav-link :href="route('user.attendance.index')" :active="request()->routeIs('user.attendance.index')">
                     {{ __('Absensi') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link wire:navigate :href="route('user.attendanceMonth.index')" :active="request()->routeIs('user.attendanceMonth.index')">
+                <x-responsive-nav-link :href="route('user.attendanceMonth.index')" :active="request()->routeIs('user.attendanceMonth.index')">
                     {{ __('Absensi Bulanan') }}
                 </x-responsive-nav-link>
             @endif
@@ -142,7 +139,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link wire:navigate :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
