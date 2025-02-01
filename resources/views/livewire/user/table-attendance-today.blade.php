@@ -47,8 +47,8 @@
                     <?php
                     use Carbon\Carbon;
                     $now = Carbon::now();
-                    $startPagi = Carbon::createFromTimeString('07:00');
-                    $endPagi = Carbon::createFromTimeString('08:00');
+                    $startPagi = Carbon::createFromTimeString('00:00');
+                    $endPagi = Carbon::createFromTimeString('24:00');
                     ?>
 
                     @if ($now->between($startPagi, $endPagi))

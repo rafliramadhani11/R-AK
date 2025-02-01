@@ -9,38 +9,46 @@
     @if (Route::has('login'))
         @auth
             @if (Auth::user()->admin)
-                <div class="flex justify-between">
-                    <a href="{{ route('admin.absenToday.index') }}"
-                        class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        Dashboard
-                    </a>
+                <div class="flex items-center justify-between gap-3">
+                    <h1 class="text-2xl font-medium">Hello, {{ Str::words(Auth::user()->name, 1, '') }} !</h1>
 
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a :href="route('logout')"
-                            class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-red-500 border border-transparent rounded-md cursor-pointer hover:bg-red-600 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                            Log Out
+                    <div class="flex items-end justify-between gap-2">
+                        <a href="{{ route('admin.absenToday.index') }}"
+                            class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            Dashboard
                         </a>
-                    </form>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a :href="route('logout')"
+                                class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-red-500 border border-transparent rounded-md cursor-pointer hover:bg-red-600 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                Log Out
+                            </a>
+                        </form>
+                    </div>
                 </div>
             @else
-                <div class="flex justify-between">
-                    <a href="{{ route('user.attendance.index') }}"
-                        class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        Dashboard
-                    </a>
+                <div class="flex items-center justify-between gap-3">
+                    <h1 class="text-2xl font-medium">Hello, {{ Str::words(Auth::user()->name, 1, '') }} !</h1>
 
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a :href="route('logout')"
-                            class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-red-500 border border-transparent rounded-md cursor-pointer hover:bg-red-600 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-                            onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                            Log Out
+                    <div class="flex items-end justify-between gap-2">
+                        <a href="{{ route('user.attendance.index') }}"
+                            class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            Dashboard
                         </a>
-                    </form>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a :href="route('logout')"
+                                class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-red-500 border border-transparent rounded-md cursor-pointer hover:bg-red-600 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                                onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                Log Out
+                            </a>
+                        </form>
+                    </div>
                 </div>
             @endif
         @else
